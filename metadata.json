@@ -1,0 +1,6 @@
+{
+  "name": "Ministério Vida - Cadastro",
+  "description": "Formulário de cadastro de visitantes para o Ministério Vida com integração ao Telegram",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
