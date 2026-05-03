@@ -14,6 +14,7 @@ export interface RegistrationData {
 
 export const submitRegistration = async (data: RegistrationData) => {
   const apiUrl = import.meta.env.VITE_API_URL || '';
+  // No Netlify, /api/telegram será redirecionado para a function automaticamente
   const endpoint = `${apiUrl}/api/telegram`;
 
   try {
