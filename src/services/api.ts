@@ -13,13 +13,26 @@ export interface RegistrationData {
 }
 
 export const submitRegistration = async (data: RegistrationData) => {
-  const response = await fetch('/api/telegram', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  
-  return response.json();
+  const apiUrl = import.meta.env.VITE_API_URL || '';
+  const endpoint = `${apiUrl}/api/telegram`;
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+    }
+    
+    return response.json();
+  } catch (error) {
+    console.error('Registration Error:', error);
+    throw error;
+  }
 };

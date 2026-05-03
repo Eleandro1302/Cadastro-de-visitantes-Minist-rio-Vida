@@ -103,9 +103,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess, o
       } else {
         setErrorMsg(data.error || t('errorSubmit'));
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      setErrorMsg(t('errorNetwork'));
+      const msg = error instanceof Error ? error.message : t('errorNetwork');
+      setErrorMsg(msg.includes('fetch') ? t('errorNetwork') : msg);
     } finally {
       setIsSubmitting(false);
     }
