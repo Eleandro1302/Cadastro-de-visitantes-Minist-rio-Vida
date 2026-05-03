@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Instagram, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
+import { PromiseBox } from './PromiseBox';
 
 export const SuccessScreen: React.FC = () => {
   const { t } = useTranslation();
@@ -78,6 +79,10 @@ export const SuccessScreen: React.FC = () => {
           <div className="text-2xl font-bold text-blue-900 tabular-nums">
             {countdown > 0 ? `${countdown}s` : 'Redirecionando...'}
           </div>
+        </div>
+
+        <div className="mb-8">
+          <PromiseBox />
         </div>
 
         <a

@@ -4,6 +4,7 @@ import { User, Info, Loader2, Plus, Trash2, HelpCircle } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { submitRegistration } from '../services/api';
+import { PromiseBox } from './PromiseBox';
 
 interface RegistrationFormProps {
   onSuccess: () => void;
@@ -328,6 +329,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess, o
               </button>
             </div>
           </div>
+
+          <PromiseBox />
 
           {/* Submit Button */}
           <button
